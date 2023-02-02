@@ -3,6 +3,7 @@ package com.bridgelabz.binarysearchtree;
 public class BinarySearchTree<T extends Comparable<T>> {
 
 	INode<T> root;
+	int size;
 	
 	BinarySearchTree(){
 		root = null;
@@ -10,6 +11,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	
 	void insert(T key) {
 		root = insertRec(root, key);
+		size++;
 	}
 	
 	INode<T> insertRec(INode<T> root, T key) {
@@ -39,12 +41,31 @@ public class BinarySearchTree<T extends Comparable<T>> {
 		}
 	}
 	
+	public int Size() {
+		return size;
+	}
+	
 	public static void main(String[] args) {
 		
 		BinarySearchTree<Integer> bst = new BinarySearchTree<Integer>();
 		bst.insert(56);
 		bst.insert(30);
 		bst.insert(70);
+		bst.insert(22);
+		bst.insert(40);
+		bst.insert(60);
+		bst.insert(95);
+		bst.insert(11);
+		bst.insert(65);
+		bst.insert(3);
+		bst.insert(16);
+		bst.insert(63);
+		bst.insert(67);		
 		bst.inorder();
+		
+		if(bst.Size() == 13)
+			System.out.println("\nAll Elements are Present !!!");
+		else
+			System.out.println("All Elemens are Not Present !!!");		
 	}
 }
