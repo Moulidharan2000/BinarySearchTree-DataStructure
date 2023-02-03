@@ -4,6 +4,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
 	INode<T> root;
 	int size;
+	static boolean flag = false;
 	
 	BinarySearchTree(){
 		root = null;
@@ -45,6 +46,20 @@ public class BinarySearchTree<T extends Comparable<T>> {
 		return size;
 	}
 	
+	public void search(INode root, T key){  
+         
+        if(root == null){  
+          System.out.println("Tree is empty");  
+        }  
+        else if(root.key == key){  
+        	flag = true;   
+        } 
+        if(flag == false && root.left != null)  
+        	search(root.left, key);  
+        if(flag == false && root.right != null)  
+        	search(root.right, key); 
+      }  
+	
 	public static void main(String[] args) {
 		
 		BinarySearchTree<Integer> bst = new BinarySearchTree<Integer>();
@@ -60,11 +75,18 @@ public class BinarySearchTree<T extends Comparable<T>> {
 		bst.insert(3);
 		bst.insert(16);
 		bst.insert(63);
-		bst.insert(67);		
+		bst.insert(67);
 		bst.inorder();
+		bst.search(bst.root,63);
+		System.out.println();
+		
+		if(flag == true) 
+			System.out.println("Element Present in the Tree");
+		else
+			System.out.println("Element is Not Present in the Tree");
 		
 		if(bst.Size() == 13)
-			System.out.println("\nAll Elements are Present !!!");
+			System.out.println("All Elements are Present !!!");
 		else
 			System.out.println("All Elemens are Not Present !!!");		
 	}

@@ -1,5 +1,5 @@
 *.settings/
-  target/
-  .project
-  .classpath
-  pom.xml
+target/
+.project
+.classpath
+pom.xml
